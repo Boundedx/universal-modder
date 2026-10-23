@@ -167,6 +167,11 @@ audio, both PowerShell with embedded C#.
   - Minecraft's colour + depth are depth-composited into GTA's frame.
   - Minecraft TNT, arrows and fireworks become GTA explosions and bullets, and Minecraft mobs fight the
     police.
+- **[examples/dragonwilds-minas-tirith](examples/dragonwilds-minas-tirith)**: Minas Tirith for RuneScape:
+  Dragonwilds, from the game's own Castle building pieces.
+  - A generator writes a 2,600-piece blueprint for the WildPlans UE4SS mod: seven battlemented tiers,
+    zig-zagging gates and stairs, the prow with tunnels, and the White Tower.
+  - Not yet tested in game; offline tests check the geometry and that the road reaches the Citadel.
 
 Each has a field note with every non-obvious lesson: [knowledge/INDEX.md](knowledge/INDEX.md).
 

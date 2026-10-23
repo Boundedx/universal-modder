@@ -1565,6 +1565,42 @@
   ]
  },
  {
+  "path": "games/runescape-dragonwilds/minas-tirith-as-a-generated-wildplans-blueprint-ue4ss-lua-bu.md",
+  "kind": "game",
+  "title": "Minas Tirith as a generated WildPlans blueprint (UE4SS Lua building mod)",
+  "game": "RuneScape: Dragonwilds",
+  "games_also": [],
+  "game_version": "1.0 (post-1.0 piece tables, WildPlans v0.1.4 data, 2026-09-30); not run by us",
+  "platform": "windows",
+  "engine": "unreal",
+  "route": "loader-api",
+  "tools": [
+   "UE4SS (Dragonwilds build, Nexus mod 4)",
+   "WildPlans v0.1.4 (UE4SS Lua, github.com/kaedon78/WildPlans)",
+   "Python 3.10 + Pillow (generator and preview)"
+  ],
+  "anti_cheat": "none known; Jagex's modding guidelines allow mods for your own play, not cheating in shared play",
+  "status": "in-progress",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-23",
+  "links": [
+   "https://github.com/kaedon78/WildPlans",
+   "https://www.nexusmods.com/runescapedragonwilds/mods/4",
+   "https://legal.jagex.com/docs/policies/runescape-dragonwilds-community-modding-guidelines",
+   "examples/dragonwilds-minas-tirith"
+  ],
+  "tags": [
+   "building",
+   "blueprint",
+   "procedural",
+   "ue4ss",
+   "lua"
+  ]
+ },
+ {
   "path": "games/schedule-i/qol-suite-and-stack-limits-on-the-schedule-i-0-4-7-il2cpp-be.md",
   "kind": "game",
   "title": "QoL suite and stack limits on the Schedule I 0.4.7 IL2CPP beta with MelonLoader",
