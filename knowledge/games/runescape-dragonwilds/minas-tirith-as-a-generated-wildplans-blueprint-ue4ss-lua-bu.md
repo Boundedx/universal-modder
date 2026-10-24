@@ -132,8 +132,13 @@ The example's README has the full player-facing steps.
 - a walk from the Great Gate along the terraces, up the gates and through the prow's tunnels reaches the
   Citadel.
 
-**Not verified:** anything in game. That includes the stairs' facing and pivot height, whether 2,600
-pieces place cleanly, and whether stacked foundations eight high pass stability without Architect.
+**In game (2026-10-23, the human's PC):**
+- UE4SS loaded, and WildPlans' panel listed both generated blueprints.
+- The small city began placing in a Creative world, without Architect.
+
+**Not yet verified:** how the finished placement looks. That includes the stairs' facing and pivot
+height, whether all the pieces landed, and whether the tower and top tiers pass stability without
+Architect.
 
 ## Gotchas
 1. **Tunnels through the prow cut it loose.** On narrow tiers, tunnels on neighbouring prow slices formed
@@ -148,6 +153,21 @@ pieces place cleanly, and whether stacked foundations eight high pass stability 
    corner to corner. **Fix:** a 4.5 m tier step at every size. The road test catches this.
 4. **Generated blueprints have no real origin**, so REPLAY > IN PLACE would build at the map's origin.
    Use PLACE only.
+5. **WildPlans didn't start, though its `enabled.txt` was present** (UE4SS for Dragonwilds, UE 5.6,
+   2026-10-23). **Cause:** UE4SS started only the mods listed in `Mods\mods.txt`. **Fix:** add
+   `WildPlans : 1` to `mods.txt`. The log is the check: a running WildPlans prints `[WildPlans] loading`,
+   then `blueprints in <path>`.
+6. **The blueprints folder wasn't created.** WildPlans makes
+   `%LOCALAPPDATA%\RSDragonwilds\Saved\WildPlans\blueprints\` with `os.execute("mkdir ...")`, but on
+   one install the folder never appeared. **Fix:** create it by hand; the panel lists whatever `.wplan`
+   files are in it.
+7. **Architect didn't work on that game build.** The log filled with `Tried setting member variable
+   'MinStability' / 'MaxStability' / 'VerticalLoss' / 'HorizontalLoss' but UObject instance is nullptr`,
+   then `Architect\Scripts\main.lua:203: attempt to get length of a UObject value (local 'profiles')`.
+   **Cause:** the stability data it patches has moved, most likely since a game update. **Fix:** none
+   yet. Set `Architect : 0` and expect the tallest parts to be limited by stability.
+8. **Players look for the blueprint folder in the game's install folder.** It's in the user's
+   `%LOCALAPPDATA%` on C:, not under `steamapps`. Give the Win+R path, not a description.
 
 ## Assets
 None generated. The city is the game's own pieces, and the preview is drawn by the script with Pillow.

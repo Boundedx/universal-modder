@@ -61,18 +61,33 @@ If you use this repo's CLI, `um backup` does the same thing.
 1. Download `WildPlans-v0.1.4.zip` (or newer) from the
    [WildPlans releases page](https://github.com/kaedon78/WildPlans/releases).
 2. Unzip it into `Win64\ue4ss\Mods\`, so that you get `Mods\WildPlans\Scripts\main.lua`.
-3. If your `Mods` folder has a `mods.txt` file, add the line `WildPlans : 1` above the `Keybinds` line.
+3. Open `Mods\mods.txt` in Notepad and add the line `WildPlans : 1`. Put it above the `Keybinds` line if
+   there is one, otherwise at the end. Don't rely on WildPlans' own `enabled.txt`: on one install,
+   UE4SS didn't start WildPlans until it was listed in `mods.txt`.
 4. Start the game. When WildPlans has loaded, a small gold house icon with an **N** under it appears at
    the bottom right of the HUD.
 
 ### 4. Install Architect (recommended)
-Follow its Nexus page. It's another UE4SS mod, so it also goes into `Win64\ue4ss\Mods\`.
+1. Follow its Nexus page. It's another UE4SS mod, so its folder goes into `Win64\ue4ss\Mods\`.
+2. Add `Architect : 1` to `mods.txt`.
+3. Check that it works on your game version: after a game start, search `UE4SS.log` for `Architect`.
+   - If the log is full of `Tried setting member variable 'MinStability' but UObject instance is
+     nullptr`, or shows an error in `Architect\Scripts\main.lua`, it doesn't work on your game version
+     yet. That was the case on 2026-10-23.
+   - In that case set `Architect : 0` and wait for an update. The city still places without it; only the
+     tallest parts may be refused as unstable.
 
 ### 5. Copy the blueprint in
-1. Start the game once with WildPlans, so it creates its folder.
-2. Press **Win + R** and paste `%LOCALAPPDATA%\RSDragonwilds\Saved\WildPlans\blueprints`.
+1. Press **Win + R**, paste `%LOCALAPPDATA%\RSDragonwilds\Saved` and press Enter.
+   - This folder is on your C: drive, under your Windows user. It is *not* in the game's install folder.
+2. Open `WildPlans`, then `blueprints`.
+   - WildPlans is meant to create these folders the first time it runs, but on one install it didn't.
+   - If either folder is missing, create it yourself with right-click > **New > Folder**.
+   - The `blueprints in ...` line in `ue4ss\UE4SS.log` shows the exact path WildPlans uses.
 3. Copy `MinasTirith.wplan` into that folder. Add `MinasTirith_small.wplan` too if you want the small
    one.
+4. Check the files end in `.wplan`, not `.wplan.txt` (in Explorer, turn on **View > Show > File name
+   extensions**). Then press **N** twice in game; the panel should list them.
 
 Download the files from this folder of the repo: open the file on GitHub, then use **Download raw file**.
 
@@ -113,7 +128,8 @@ means the map's origin point.
 | The stairs float or sink a little | Adjust their height: `--stair-z 50` or `--stair-z 100` (the default is 75 cm). |
 | The game stutters or a few pieces don't land | Try `MinasTirith_small.wplan` first. WildPlans has been tested with placements of up to about 1,150 pieces. To slow it down, put a `pacing.txt` in the blueprints folder with the lines `step_ms_local 500` and `batch_pause_ms 4000`. |
 | The panel says the blueprint has pieces the game doesn't have | A game update renamed pieces. Update WildPlans and check this repo for a newer blueprint. |
-| Nothing happens on N | Check `Win64\ue4ss\UE4SS.log` and `%LOCALAPPDATA%\RSDragonwilds\Saved\WildPlans\logs\`. |
+| No gold N icon, and nothing happens on N | WildPlans isn't loaded. Make sure `WildPlans : 1` is in `Mods\mods.txt`, and that `Mods\WildPlans\Scripts\main.lua` exists (not a doubled `WildPlans\WildPlans` folder). Then check `Win64\ue4ss\UE4SS.log` for `[WildPlans]` lines. |
+| The panel says BLUEPRINTS (0) | The `.wplan` files aren't in the folder WildPlans reads. Search `UE4SS.log` for `blueprints in` to see the exact path, and check the files don't end in `.txt`. |
 
 ## Making your own version
 
